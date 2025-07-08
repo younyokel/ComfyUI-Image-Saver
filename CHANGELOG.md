@@ -1,3 +1,12 @@
+# v1.12.0
+
+- Schedulers list for KSampler (inspire) has been updated.
+- BREAKING CHANGE: To avoid confusion, following nodes have been renamed:
+    SchedulerSelector -> SchedulerSelectorInspire
+    SchedulerSelectorComfy -> SchedulerSelector
+    SchedulerToString -> SchedulerInspireToString
+    SchedulerComfyToString -> SchedulerToString
+
 # v1.11.1
 
 - Place preview switch at the end
