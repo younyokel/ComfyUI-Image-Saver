@@ -3,7 +3,7 @@ from typing import Any
 from .nodes import ImageSaver, ImageSaverSimple, ImageSaverMetadata
 from .nodes_literals import SeedGenerator, StringLiteral, SizeLiteral, IntLiteral, FloatLiteral, CfgLiteral
 from .nodes_loaders import CheckpointLoaderWithName, UNETLoaderWithName
-from .nodes_selectors import SamplerSelector, SchedulerSelector, SchedulerSelectorComfy, SchedulerToString, SamplerToString, SchedulerComfyToString, InputParameters
+from .nodes_selectors import SamplerSelector, SchedulerSelector, SchedulerSelectorInspire, SchedulerToString, SamplerToString, SchedulerInspireToString, InputParameters
 from .civitai_nodes import CivitaiHashFetcher
 
 NODE_CLASS_MAPPINGS: dict[str, Any] = {
@@ -14,7 +14,8 @@ NODE_CLASS_MAPPINGS: dict[str, Any] = {
     "Image Saver Metadata": ImageSaverMetadata,
     "Sampler Selector (Image Saver)": SamplerSelector,
     "Scheduler Selector (Image Saver)": SchedulerSelector,
-    "Scheduler Selector (Comfy) (Image Saver)": SchedulerSelectorComfy,
+    "Scheduler Selector (inspire) (Image Saver)": SchedulerSelectorInspire,
+    "Scheduler Selector (Image Saver)": SchedulerSelector,
     "Input Parameters (Image Saver)": InputParameters,
     "Seed Generator (Image Saver)": SeedGenerator,
     "String Literal (Image Saver)": StringLiteral,
@@ -23,7 +24,7 @@ NODE_CLASS_MAPPINGS: dict[str, Any] = {
     "Int Literal (Image Saver)": IntLiteral,
     "Float Literal (Image Saver)": FloatLiteral,
     "SchedulerToString (Image Saver)": SchedulerToString,
-    "SchedulerComfyToString (Image Saver)": SchedulerComfyToString,
+    "SchedulerInspireToString (Image Saver)": SchedulerInspireToString,
     "SamplerToString (Image Saver)": SamplerToString,
     "Civitai Hash Fetcher (Image Saver)": CivitaiHashFetcher,
 }
