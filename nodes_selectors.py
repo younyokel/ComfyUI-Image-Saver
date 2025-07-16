@@ -61,6 +61,26 @@ class SchedulerSelectorInspire:
     def get_names(self, scheduler: str) -> tuple[str, str]:
         return (scheduler, scheduler)
 
+class SchedulerSelectorEfficiency:
+    RETURN_TYPES = (comfy.samplers.KSampler.SCHEDULERS + ['AYS SD1', 'AYS SDXL', 'AYS SVD', 'GITS'], "STRING")
+    RETURN_NAMES = ("scheduler",                                                                                                       "scheduler_name")
+    OUTPUT_TOOLTIPS = ("scheduler (SCHEDULERS + ['AYS SD1', 'AYS SDXL', 'AYS SVD', 'GITS'])",        "scheduler name (STRING)")
+    FUNCTION = "get_names"
+
+    CATEGORY = 'ImageSaver/utils'
+    DESCRIPTION = 'Provides one of the KSampler (Eff.) schedulers'
+
+    @classmethod
+    def INPUT_TYPES(cls) -> dict[str, Any]:
+        return {
+            "required": {
+                "scheduler": (comfy.samplers.KSampler.SCHEDULERS + ['AYS SD1', 'AYS SDXL', 'AYS SVD', 'GITS'], {"tooltip": "scheduler (Comfy's standard + Efficiency nodes)"}),
+            }
+        }
+
+    def get_names(self, scheduler: str) -> tuple[str, str]:
+        return (scheduler, scheduler)
+
 class SchedulerToString:
     RETURN_TYPES = ("STRING",)
     RETURN_NAMES = ("scheduler_name",)
@@ -68,7 +88,7 @@ class SchedulerToString:
     FUNCTION = "get_name"
 
     CATEGORY = 'ImageSaver/utils'
-    DESCRIPTION = 'Provides a given sandard ComfyUI scheduler\'s name as string'
+    DESCRIPTION = 'Provides a KSampler\'s scheduler name as string'
 
     @classmethod
     def INPUT_TYPES(cls) -> dict[str, Any]:
@@ -88,13 +108,33 @@ class SchedulerInspireToString:
     FUNCTION = "get_name"
 
     CATEGORY = 'ImageSaver/utils'
-    DESCRIPTION = 'Provides a given sandard ComfyUI or some extra scheduler\'s name as string'
+    DESCRIPTION = 'Provides a Inspire Pack\'s scheduler name as string'
 
     @classmethod
     def INPUT_TYPES(cls) -> dict[str, Any]:
         return {
             "required": {
                 "scheduler": (comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]', 'OSS FLUX', 'OSS Wan'], {"tooltip": "scheduler (KSampler inspire)"}),
+            }
+        }
+
+    def get_name(self, scheduler: str) -> tuple[str,]:
+        return (scheduler,)
+
+class SchedulerEfficiencyToString:
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("scheduler_name",)
+    OUTPUT_TOOLTIPS = ("scheduler name (STRING)",)
+    FUNCTION = "get_name"
+
+    CATEGORY = 'ImageSaver/utils'
+    DESCRIPTION = 'Provides a Efficiency pack\'s scheduler name as string'
+
+    @classmethod
+    def INPUT_TYPES(cls) -> dict[str, Any]:
+        return {
+            "required": {
+                "scheduler": (comfy.samplers.KSampler.SCHEDULERS + ['AYS SD1', 'AYS SDXL', 'AYS SVD', 'GITS'], {"tooltip": "scheduler (Efficiency nodes)"}),
             }
         }
 
