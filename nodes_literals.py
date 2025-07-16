@@ -1,4 +1,5 @@
 from sys import float_info
+from typing import Any
 from nodes import MAX_RESOLUTION
 
 class SeedGenerator:
@@ -10,7 +11,7 @@ class SeedGenerator:
     DESCRIPTION = "Provides seed as integer"
 
     @classmethod
-    def INPUT_TYPES(cls):
+    def INPUT_TYPES(cls) -> dict[str, Any]:
         return {
             "required": {
                 "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff, "control_after_generate": True, "tooltip": "The random seed used for creating the noise."}),
@@ -18,7 +19,7 @@ class SeedGenerator:
             }
         }
 
-    def get_seed(self, seed, increment):
+    def get_seed(self, seed: int, increment: int) -> tuple[int,]:
         return (seed + increment,)
 
 class StringLiteral:
@@ -30,15 +31,15 @@ class StringLiteral:
     DESCRIPTION = "Provides a string"
 
     @classmethod
-    def INPUT_TYPES(cls):
+    def INPUT_TYPES(cls) -> dict[str, Any]:
         return {
             "required": {
                 "string": ("STRING", {"default": "", "multiline": True, "tooltip": "string"}),
             }
         }
 
-    def get_string(self, string):
-        return (string,)
+    def get_string(self, s: str) -> tuple[str,] :
+        return (s,)
 
 class SizeLiteral:
     RETURN_TYPES = ("INT",)
@@ -50,15 +51,15 @@ class SizeLiteral:
     DESCRIPTION = f"Provides integer number between 0 and {MAX_RESOLUTION} (step=8)"
 
     @classmethod
-    def INPUT_TYPES(cls):
+    def INPUT_TYPES(cls) -> dict[str, Any]:
         return {
             "required": {
-                "int": ("INT", {"default": 512, "min": 0, "max": MAX_RESOLUTION, "step": 8, "tooltip": "size as integer (in steps of 8)"}),
+                "size": ("INT", {"default": 512, "min": 0, "max": MAX_RESOLUTION, "step": 8, "tooltip": "size as integer (in steps of 8)"}),
             }
         }
 
-    def get_int(self, int):
-        return (int,)
+    def get_int(self, size: int) -> tuple[int,]:
+        return (size,)
 
 class IntLiteral:
     RETURN_TYPES = ("INT",)
@@ -69,15 +70,15 @@ class IntLiteral:
     DESCRIPTION = "Provides integer number between 0 and 1000000"
 
     @classmethod
-    def INPUT_TYPES(cls):
+    def INPUT_TYPES(cls) -> dict[str, Any]:
         return {
             "required": {
                 "int": ("INT", {"default": 0, "min": 0, "max": 1000000, "tooltip": "integer number"}),
             }
         }
 
-    def get_int(self, int):
-        return (int,)
+    def get_int(self, i: int) -> tuple[int,]:
+        return (i,)
 
 class FloatLiteral:
     RETURN_TYPES = ("FLOAT",)
@@ -88,15 +89,15 @@ class FloatLiteral:
     DESCRIPTION = f"Provides a floating point number between {float_info.min} and {float_info.max} (step=0.01)"
 
     @classmethod
-    def INPUT_TYPES(cls):
+    def INPUT_TYPES(cls) -> dict[str, Any]:
         return {
             "required": {
                 "float": ("FLOAT", {"default": 1.0, "min": float_info.min, "max": float_info.max, "step": 0.01, "tooltip": "floating point number"}),
             }
         }
 
-    def get_float(self, float):
-        return (float,)
+    def get_float(self, f: float):
+        return (f,)
 
 class CfgLiteral:
     RETURN_TYPES = ("FLOAT",)
@@ -108,12 +109,12 @@ class CfgLiteral:
     DESCRIPTION = "Provides CFG value between 0.0 and 100.0"
 
     @classmethod
-    def INPUT_TYPES(cls):
+    def INPUT_TYPES(cls) -> dict[str, Any]:
         return {
             "required": {
-                "float": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 100.0, "tooltip": "CFG as a floating point number"}),
+                "cfg": ("FLOAT", {"default": 7.0, "min": 0.0, "max": 100.0, "tooltip": "CFG as a floating point number"}),
             }
         }
 
-    def get_float(self, float):
-        return (float,)
+    def get_float(self, cfg: float) -> tuple[float,]:
+        return (cfg,)
