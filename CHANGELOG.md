@@ -1,3 +1,7 @@
+# v1.13.1
+
+- Fix parameter name mismatch
+
 # v1.13.0
 
 - Add support for Efficiency node pack's schedulers
