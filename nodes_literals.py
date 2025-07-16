@@ -38,8 +38,8 @@ class StringLiteral:
             }
         }
 
-    def get_string(self, s: str) -> tuple[str,] :
-        return (s,)
+    def get_string(self, string: str) -> tuple[str,] :
+        return (string,)
 
 class SizeLiteral:
     RETURN_TYPES = ("INT",)
@@ -77,8 +77,8 @@ class IntLiteral:
             }
         }
 
-    def get_int(self, i: int) -> tuple[int,]:
-        return (i,)
+    def get_int(self, int: int) -> tuple[int,]:
+        return (int,)
 
 class FloatLiteral:
     RETURN_TYPES = ("FLOAT",)
@@ -96,8 +96,8 @@ class FloatLiteral:
             }
         }
 
-    def get_float(self, f: float):
-        return (f,)
+    def get_float(self, float: float):
+        return (float,)
 
 class CfgLiteral:
     RETURN_TYPES = ("FLOAT",)
