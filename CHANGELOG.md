@@ -1,3 +1,7 @@
+# v1.13.0
+
+- Add support for Efficiency node pack's schedulers
+
 # v1.12.0
 
 - Schedulers list for KSampler (inspire) has been updated.
