@@ -1,3 +1,7 @@
+# v1.14.0
+
+- Add ConditioningConcatOptional utility
+
 # v1.13.1
 
 - Fix parameter name mismatch
