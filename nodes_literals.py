@@ -1,6 +1,7 @@
 from sys import float_info
 from typing import Any
 from nodes import MAX_RESOLUTION
+import torch
 
 class SeedGenerator:
     RETURN_TYPES = ("INT",)
