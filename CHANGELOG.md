@@ -1,3 +1,7 @@
+# v1.14.1
+
+- Expose ConditioningConcatOptional utility
+
 # v1.14.0
 
 - Add ConditioningConcatOptional utility
