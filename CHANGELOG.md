@@ -1,3 +1,7 @@
+# v1.14.2
+
+- Update list of schedulers
+
 # v1.14.1
 
 - Expose ConditioningConcatOptional utility
