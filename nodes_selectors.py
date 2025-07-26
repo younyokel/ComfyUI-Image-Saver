@@ -1,5 +1,8 @@
 from typing import Any
-import comfy.sd
+import comfy
+
+INSPIRE_SCHEDULERS = comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]', 'LTXV[default]', 'OSS FLUX', 'OSS Wan', 'OSS Chroma']
+EFF_SCHEDULERS = comfy.samplers.KSampler.SCHEDULERS + ['AYS SD1', 'AYS SDXL', 'AYS SVD', 'GITS']
 
 class SamplerSelector:
     RETURN_TYPES = (comfy.samplers.KSampler.SAMPLERS, "STRING")
@@ -42,9 +45,9 @@ class SchedulerSelector:
         return (scheduler, scheduler)
 
 class SchedulerSelectorInspire:
-    RETURN_TYPES = (comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]', 'OSS FLUX', 'OSS Wan'], "STRING")
-    RETURN_NAMES = ("scheduler",                                                                                                       "scheduler_name")
-    OUTPUT_TOOLTIPS = ("scheduler (SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]', 'OSS FLUX', 'OSS Wan'])",        "scheduler name (STRING)")
+    RETURN_TYPES = (INSPIRE_SCHEDULERS, "STRING")
+    RETURN_NAMES = ("scheduler", "scheduler_name")
+    OUTPUT_TOOLTIPS = ("scheduler (ComfyUI + Inspire Pack Schedulers)", "scheduler name (STRING)")
     FUNCTION = "get_names"
 
     CATEGORY = 'ImageSaver/utils'
@@ -54,7 +57,7 @@ class SchedulerSelectorInspire:
     def INPUT_TYPES(cls) -> dict[str, Any]:
         return {
             "required": {
-                "scheduler": (comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]', 'OSS FLUX', 'OSS Wan'], {"tooltip": "scheduler (Comfy's standard + extras)"}),
+                "scheduler": (INSPIRE_SCHEDULERS, {"tooltip": "scheduler (Comfy's standard + extras)"}),
             }
         }
 
@@ -62,9 +65,9 @@ class SchedulerSelectorInspire:
         return (scheduler, scheduler)
 
 class SchedulerSelectorEfficiency:
-    RETURN_TYPES = (comfy.samplers.KSampler.SCHEDULERS + ['AYS SD1', 'AYS SDXL', 'AYS SVD', 'GITS'], "STRING")
-    RETURN_NAMES = ("scheduler",                                                                                                       "scheduler_name")
-    OUTPUT_TOOLTIPS = ("scheduler (SCHEDULERS + ['AYS SD1', 'AYS SDXL', 'AYS SVD', 'GITS'])",        "scheduler name (STRING)")
+    RETURN_TYPES = (EFF_SCHEDULERS, "STRING")
+    RETURN_NAMES = ("scheduler", "scheduler_name")
+    OUTPUT_TOOLTIPS = ("scheduler (ComfyUI + Efficiency Pack Schedulers)", "scheduler name (STRING)")
     FUNCTION = "get_names"
 
     CATEGORY = 'ImageSaver/utils'
@@ -74,7 +77,7 @@ class SchedulerSelectorEfficiency:
     def INPUT_TYPES(cls) -> dict[str, Any]:
         return {
             "required": {
-                "scheduler": (comfy.samplers.KSampler.SCHEDULERS + ['AYS SD1', 'AYS SDXL', 'AYS SVD', 'GITS'], {"tooltip": "scheduler (Comfy's standard + Efficiency nodes)"}),
+                "scheduler": (EFF_SCHEDULERS, {"tooltip": "scheduler (Comfy's standard + Efficiency nodes)"}),
             }
         }
 
