@@ -1,7 +1,7 @@
 from typing import Any
 import comfy
 
-INSPIRE_SCHEDULERS = comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', 'GITS[coeff=1.2]', 'LTXV[default]', 'OSS FLUX', 'OSS Wan', 'OSS Chroma']
+INSPIRE_SCHEDULERS = comfy.samplers.KSampler.SCHEDULERS + ['AYS SDXL', 'AYS SD1', 'AYS SVD', "GITS[coeff=1.2]", 'OSS FLUX', 'OSS Wan', 'OSS Chroma']
 EFF_SCHEDULERS = comfy.samplers.KSampler.SCHEDULERS + ['AYS SD1', 'AYS SDXL', 'AYS SVD', 'GITS']
 
 class SamplerSelector:
